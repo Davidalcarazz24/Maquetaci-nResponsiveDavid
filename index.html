@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- Indico que el documento está escrito en HTML5 -->
+<html lang="es">
+  <!-- Especifico que el contenido de la página está en español -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Configuro la codificación de caracteres para mostrar bien tildes y eñes -->
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <!-- Hago que la página se adapte a pantallas de móviles y tablet -->
+
+    <meta
+      name="description"
+      content="Galería tipo Pinterest con fotografías de pueblos y ciudades de la Región de Murcia."
+    />
+    <!-- Describo de qué va la página para los buscadores -->
+    <meta
+      name="keywords"
+      content="Murcia, pueblos, ciudades, turismo, galería, Pinterest"
+    />
+    <!-- Añado palabras clave relacionadas con el contenido -->
+    <meta name="author" content="David Alcaraz" />
+    <!-- Indico quién es el autor de la página -->
+
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="googlebot" content="notranslate" />
+    <meta name="google" content="nopagereadaloud" />
+    <!-- Con estas meta etiquetas controlo cómo los buscadores tratan mi página -->
+
+    <title>Pueblos y Ciudades de Murcia</title>
+    <!-- Título que se muestra en la pestaña del navegador -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Enlazo el archivo CSS donde está el diseño de la página -->
+  </head>
+
+  <body>
+    <!-- Todo el contenido visible de la página va dentro del body -->
+    <div class="layout">
+      <!-- Uso este div como contenedor principal del diseño -->
+      <header class="header-main">
+        <!-- Cabecera principal de la página -->
+        <div class="header-wrapper">
+          <h1>Pueblos y Ciudades de Murcia</h1>
+          <!-- Título principal que presenta el tema de la web -->
+          <p class="subtitulo-header">
+            <strong>Galería Región de Murcia</strong>
+          </p>
+          <!-- Subtítulo que explica que es una galería de la Región de Murcia -->
+        </div>
+      </header>
+
+      <nav>
+        <!-- Menú de navegación para cambiar de sección en la galería -->
+        <ul id="menu">
+          <li>
+            <a href="#" class="menu-link active" data-filter="inicio">Inicio</a>
+            <!-- Botón para ver la galería inicial con todas las imágenes -->
+          </li>
+          <li><a href="#" class="menu-link" data-filter="costa">Costa</a></li>
+          <!-- Botón para filtrar solo los pueblos y ciudades de costa -->
+          <li>
+            <a href="#" class="menu-link" data-filter="interior">Interior</a>
+          </li>
+          <!-- Botón para filtrar solo los pueblos y ciudades de interior -->
+          <li>
+            <a href="#" class="menu-link" data-filter="favoritos">Favoritos</a>
+          </li>
+          <!-- Botón para mostrar las imágenes marcadas como favoritas -->
+        </ul>
+      </nav>
+
+      <main>
+        <!-- Aquí coloco el contenido principal de la página -->
+        <section class="galeria">
+          <!-- Sección donde está la galería de imágenes -->
+          <div class="header">
+            <h2>Galería de pueblos y ciudades</h2>
+            <!-- Título de la sección de la galería -->
+          </div>
+
+          <div class="container gallery">
+            <!-- Contenedor general de la galería con varias columnas -->
+            <!-- COLUMNA 1 -->
+            <div class="column">
+              <!-- Primera columna de la galería -->
+              <figure class="pin gallery-item" data-tipo="interior">
+                <!-- Cada figure es una tarjeta tipo Pinterest con su categoría -->
+                <img class="zoom" src="img/murcia1.jpg" alt="Murcia" />
+                <!-- Imagen de Murcia, con efecto zoom y texto alternativo -->
+                <figcaption class="pin-overlay">
+                  <!-- Capa que aparece sobre la imagen al interactuar -->
+                  <p class="pin-text">Murcia – Catedral</p>
+                  <!-- Texto descriptivo de la imagen -->
+                  <div class="pin-actions">
+                    <!-- Contenedor de los botones de acción -->
+                    <button class="pin-like">♡</button>
+                    <!-- Botón para marcar la imagen como favorita -->
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Murcia"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                    <!-- Enlace externo a más información en Wikipedia -->
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="costa">
+                <img class="zoom" src="img/cartagena.jpg" alt="Cartagena" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Cartagena – Puerto</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Cartagena_(España)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/lorca.jpg" alt="Lorca" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Lorca – Castillo</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Lorca"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/molina.jpg" alt="Molina de Segura" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Molina de Segura – Panorámica</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Molina_de_Segura"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+
+            <!-- COLUMNA 2 -->
+            <div class="column">
+              <!-- Segunda columna de la galería -->
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/caravaca.jpg" alt="Caravaca" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Caravaca de la Cruz – Santuario</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Caravaca_de_la_Cruz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/cehegin.jpg" alt="Cehegín" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Cehegín – Casco Antiguo</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Ceheg%C3%ADn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/archena.jpg" alt="Archena" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Archena – Balneario</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Archena"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="costa">
+                <img class="zoom" src="img/aguilas.jpg" alt="Águilas" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Águilas – Costa Mediterránea</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/%C3%81guilas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+
+            <!-- COLUMNA 3 -->
+            <div class="column">
+              <!-- Tercera columna de la galería -->
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/alhama.jpg" alt="Alhama" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Alhama de Murcia – Castillo</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Alhama_de_Murcia"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="costa">
+                <img class="zoom" src="img/mazarron.jpg" alt="Mazarrón" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Mazarrón – Bahía</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Mazarr%C3%B3n"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/totana.jpg" alt="Totana" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Totana – Sierra Espuña</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Totana"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="costa">
+                <img class="zoom" src="img/san_javier.jpg" alt="San Javier" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">San Javier – Mar Menor</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/San_Javier_(Murcia)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+
+            <!-- COLUMNA 4 -->
+            <div class="column">
+              <!-- Cuarta columna de la galería -->
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/la_union.jpg" alt="La Unión" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">La Unión – Minas</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/La_Uni%C3%B3n_(Murcia)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="costa">
+                <img
+                  class="zoom"
+                  src="img/san_pedro.jpg"
+                  alt="San Pedro del Pinatar"
+                />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">San Pedro del Pinatar – Salinas</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/San_Pedro_del_Pinatar"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/yecla.jpg" alt="Yecla" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Yecla – Tierra de Vinos</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Yecla"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+
+              <figure class="pin gallery-item" data-tipo="interior">
+                <img class="zoom" src="img/jumilla.jpg" alt="Jumilla" />
+                <figcaption class="pin-overlay">
+                  <p class="pin-text">Jumilla – Viñedos</p>
+                  <div class="pin-actions">
+                    <button class="pin-like">♡</button>
+                    <a
+                      class="pin-external"
+                      href="https://es.wikipedia.org/wiki/Jumilla"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >↗</a
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <!-- Pie de página con información del autor y del tipo de maquetación -->
+        <div class="footer-wrapper">
+          Maquetación responsive con Flexbox y Media Queries por David Alcaraz
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Enlazo el archivo JavaScript que controla el filtrado y los favoritos -->
+  </body>
+</html>
