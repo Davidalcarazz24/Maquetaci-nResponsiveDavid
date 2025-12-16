@@ -1,104 +1,106 @@
 <!DOCTYPE html>
-<!-- Indico que el documento está escrito en HTML5 -->
+<!-- [1.1-HTML] define estructura -->
 <html lang="es">
-  <!-- Especifico que el contenido de la página está en español -->
+  <!-- [1.1-HTML] idioma documento -->
   <head>
     <meta charset="UTF-8" />
-    <!-- Configuro la codificación de caracteres para mostrar bien tildes y eñes -->
+    <!-- [5.1-SEO] define codificación -->
 
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
     />
-    <!-- Hago que la página se adapte a pantallas de móviles y tablet -->
+    <!-- [5.2-MOVIL] controla zoom -->
 
     <meta
       name="description"
       content="Galería tipo Pinterest con fotografías de pueblos y ciudades de la Región de Murcia."
     />
-    <!-- Describo de qué va la página para los buscadores -->
+    <!-- [5.1-SEO] meta descripción -->
     <meta
       name="keywords"
       content="Murcia, pueblos, ciudades, turismo, galería, Pinterest"
     />
-    <!-- Añado palabras clave relacionadas con el contenido -->
+    <!-- [5.1-SEO] meta keywords -->
     <meta name="author" content="David Alcaraz" />
-    <!-- Indico quién es el autor de la página -->
+    <!-- [5.1-SEO] meta autor -->
 
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
     <meta name="googlebot" content="notranslate" />
     <meta name="google" content="nopagereadaloud" />
-    <!-- Con estas meta etiquetas controlo cómo los buscadores tratan mi página -->
+    <!-- [5.1-SEO] control rastreo -->
 
     <title>Pueblos y Ciudades de Murcia</title>
-    <!-- Título que se muestra en la pestaña del navegador -->
+    <!-- [1.1-HTML] título pestaña -->
     <link rel="stylesheet" href="styles.css" />
-    <!-- Enlazo el archivo CSS donde está el diseño de la página -->
+    <!-- [1.2-LAYOUT] enlaza estilos -->
   </head>
 
   <body>
-    <!-- Todo el contenido visible de la página va dentro del body -->
+    <!-- [1.1-HTML] cuerpo página -->
     <div class="layout">
-      <!-- Uso este div como contenedor principal del diseño -->
+      <!-- [1.2-LAYOUT] contenedor principal -->
       <header class="header-main">
-        <!-- Cabecera principal de la página -->
+        <!-- [1.1-HEADER] cabecera página -->
         <div class="header-wrapper">
           <h1>Pueblos y Ciudades de Murcia</h1>
-          <!-- Título principal que presenta el tema de la web -->
+          <!-- [1.1-HEADER] título principal -->
           <p class="subtitulo-header">
             <strong>Galería Región de Murcia</strong>
           </p>
-          <!-- Subtítulo que explica que es una galería de la Región de Murcia -->
+          <!-- [1.1-HEADER] subtítulo galería -->
         </div>
       </header>
 
       <nav>
-        <!-- Menú de navegación para cambiar de sección en la galería -->
+        <!-- [1.1-MENÚ] bloque navegación -->
         <ul id="menu">
           <li>
             <a href="#" class="menu-link active" data-filter="inicio">Inicio</a>
-            <!-- Botón para ver la galería inicial con todas las imágenes -->
+            <!-- [2.3-FILTROS] muestra todo -->
           </li>
-          <li><a href="#" class="menu-link" data-filter="costa">Costa</a></li>
-          <!-- Botón para filtrar solo los pueblos y ciudades de costa -->
+          <li>
+            <a href="#" class="menu-link" data-filter="costa">Costa</a>
+          </li>
+          <!-- [2.3-FILTROS] solo costa -->
           <li>
             <a href="#" class="menu-link" data-filter="interior">Interior</a>
           </li>
-          <!-- Botón para filtrar solo los pueblos y ciudades de interior -->
+          <!-- [2.3-FILTROS] solo interior -->
           <li>
             <a href="#" class="menu-link" data-filter="favoritos">Favoritos</a>
           </li>
-          <!-- Botón para mostrar las imágenes marcadas como favoritas -->
+          <!-- [4.2-FAVORITOS] vista favoritos -->
         </ul>
       </nav>
 
       <main>
-        <!-- Aquí coloco el contenido principal de la página -->
+        <!-- [1.1-MAIN] contenido principal -->
         <section class="galeria">
-          <!-- Sección donde está la galería de imágenes -->
+          <!-- [3.1-CARDS] sección galería -->
           <div class="header">
             <h2>Galería de pueblos y ciudades</h2>
-            <!-- Título de la sección de la galería -->
+            <!-- [3.1-CARDS] título galería -->
           </div>
 
           <div class="container gallery">
-            <!-- Contenedor general de la galería con varias columnas -->
+            <!-- [1.2-FLEX] contenedor columnas -->
             <!-- COLUMNA 1 -->
             <div class="column">
-              <!-- Primera columna de la galería -->
+              <!-- [1.2-FLEX] primera columna -->
               <figure class="pin gallery-item" data-tipo="interior">
-                <!-- Cada figure es una tarjeta tipo Pinterest con su categoría -->
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/murcia1.jpg" alt="Murcia" />
-                <!-- Imagen de Murcia, con efecto zoom y texto alternativo -->
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
-                  <!-- Capa que aparece sobre la imagen al interactuar -->
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Murcia – Catedral</p>
-                  <!-- Texto descriptivo de la imagen -->
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
-                    <!-- Contenedor de los botones de acción -->
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
-                    <!-- Botón para marcar la imagen como favorita -->
+                    <!-- [4.1-LIKE] botón me gusta -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Murcia"
@@ -106,17 +108,23 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
-                    <!-- Enlace externo a más información en Wikipedia -->
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="costa">
+                <!-- [3.1-CARDS] card costa -->
                 <img class="zoom" src="img/cartagena.jpg" alt="Cartagena" />
+                <!-- [3.2-HOVER] imagen costa -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay costa -->
                   <p class="pin-text">Cartagena – Puerto</p>
+                  <!-- [3.1-CARDS] texto costa -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones costa -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] like costa -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Cartagena_(España)"
@@ -124,16 +132,23 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace costa -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/lorca.jpg" alt="Lorca" />
+                <!-- [3.2-HOVER] imagen Lorca -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay Lorca -->
                   <p class="pin-text">Lorca – Castillo</p>
+                  <!-- [3.1-CARDS] texto Lorca -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones Lorca -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] like Lorca -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Lorca"
@@ -141,16 +156,23 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace Lorca -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/molina.jpg" alt="Molina de Segura" />
+                <!-- [3.2-HOVER] imagen Molina -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay Molina -->
                   <p class="pin-text">Molina de Segura – Panorámica</p>
+                  <!-- [3.1-CARDS] texto Molina -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones Molina -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] like Molina -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Molina_de_Segura"
@@ -158,6 +180,7 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace Molina -->
                   </div>
                 </figcaption>
               </figure>
@@ -165,13 +188,19 @@
 
             <!-- COLUMNA 2 -->
             <div class="column">
-              <!-- Segunda columna de la galería -->
+              <!-- [1.2-FLEX] segunda columna -->
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/caravaca.jpg" alt="Caravaca" />
+                <!-- [3.2-HOVER] imagen Caravaca -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay Caravaca -->
                   <p class="pin-text">Caravaca de la Cruz – Santuario</p>
+                  <!-- [3.1-CARDS] texto Caravaca -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones Caravaca -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] like Caravaca -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Caravaca_de_la_Cruz"
@@ -179,16 +208,23 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace Caravaca -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/cehegin.jpg" alt="Cehegín" />
+                <!-- [3.2-HOVER] imagen Cehegín -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay Cehegín -->
                   <p class="pin-text">Cehegín – Casco Antiguo</p>
+                  <!-- [3.1-CARDS] texto Cehegín -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones Cehegín -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] like Cehegín -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Ceheg%C3%ADn"
@@ -196,16 +232,24 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace Cehegín -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- [3.1-CARDS] card interior -->
+                <!-- Tarjeta de Archena -->
                 <img class="zoom" src="img/archena.jpg" alt="Archena" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Archena – Balneario</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Archena"
@@ -213,16 +257,24 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="costa">
+                <!-- Tarjeta de Águilas -->
+                <!-- [3.1-CARDS] card costa -->
                 <img class="zoom" src="img/aguilas.jpg" alt="Águilas" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Águilas – Costa Mediterránea</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/%C3%81guilas"
@@ -230,6 +282,7 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
@@ -238,12 +291,20 @@
             <!-- COLUMNA 3 -->
             <div class="column">
               <!-- Tercera columna de la galería -->
+              <!-- [1.2-FLEX] tercera columna -->
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- Tarjeta de Alhama -->
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/alhama.jpg" alt="Alhama" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Alhama de Murcia – Castillo</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Alhama_de_Murcia"
@@ -251,16 +312,24 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="costa">
+                <!-- Tarjeta de Mazarrón -->
+                <!-- [3.1-CARDS] card costa -->
                 <img class="zoom" src="img/mazarron.jpg" alt="Mazarrón" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Mazarrón – Bahía</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Mazarr%C3%B3n"
@@ -268,16 +337,24 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- Tarjeta de Totana -->
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/totana.jpg" alt="Totana" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Totana – Sierra Espuña</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Totana"
@@ -285,16 +362,24 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="costa">
+                <!-- Tarjeta de San Javier -->
+                <!-- [3.1-CARDS] card costa -->
                 <img class="zoom" src="img/san_javier.jpg" alt="San Javier" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">San Javier – Mar Menor</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/San_Javier_(Murcia)"
@@ -302,6 +387,7 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
@@ -310,12 +396,20 @@
             <!-- COLUMNA 4 -->
             <div class="column">
               <!-- Cuarta columna de la galería -->
+              <!-- [1.2-FLEX] cuarta columna -->
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- Tarjeta de La Unión -->
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/la_union.jpg" alt="La Unión" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">La Unión – Minas</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/La_Uni%C3%B3n_(Murcia)"
@@ -323,20 +417,28 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="costa">
+                <!-- Tarjeta de San Pedro del Pinatar -->
+                <!-- [3.1-CARDS] card costa -->
                 <img
                   class="zoom"
                   src="img/san_pedro.jpg"
                   alt="San Pedro del Pinatar"
                 />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">San Pedro del Pinatar – Salinas</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/San_Pedro_del_Pinatar"
@@ -344,16 +446,24 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- Tarjeta de Yecla -->
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/yecla.jpg" alt="Yecla" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Yecla – Tierra de Vinos</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Yecla"
@@ -361,16 +471,24 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
 
               <figure class="pin gallery-item" data-tipo="interior">
+                <!-- Tarjeta de Jumilla -->
+                <!-- [3.1-CARDS] card interior -->
                 <img class="zoom" src="img/jumilla.jpg" alt="Jumilla" />
+                <!-- [3.2-HOVER] imagen zoom -->
                 <figcaption class="pin-overlay">
+                  <!-- [3.2-HOVER] overlay oscuro -->
                   <p class="pin-text">Jumilla – Viñedos</p>
+                  <!-- [3.1-CARDS] texto card -->
                   <div class="pin-actions">
+                    <!-- [3.3-BOTONES] acciones card -->
                     <button class="pin-like">♡</button>
+                    <!-- [4.1-LIKE] botón like -->
                     <a
                       class="pin-external"
                       href="https://es.wikipedia.org/wiki/Jumilla"
@@ -378,6 +496,7 @@
                       rel="noopener noreferrer"
                       >↗</a
                     >
+                    <!-- [3.2-HOVER] enlace externo -->
                   </div>
                 </figcaption>
               </figure>
@@ -390,11 +509,15 @@
         <!-- Pie de página con información del autor y del tipo de maquetación -->
         <div class="footer-wrapper">
           Maquetación responsive con Flexbox y Media Queries por David Alcaraz
+          <!-- [6.2-SOMBRA] texto créditos -->
+          <!-- [1.1-FOOTER] pie página -->
         </div>
       </footer>
     </div>
 
     <script src="script.js"></script>
+    <!-- [4-JS] lógica filtros -->
     <!-- Enlazo el archivo JavaScript que controla el filtrado y los favoritos -->
+    <!-- [4.2-INTERACCIÓN] me gusta y reordenar -->
   </body>
 </html>
