@@ -1,170 +1,203 @@
+/* =========================================================
+   [4] INTERACCIÓN "ME GUSTA" + REORDENACIÓN (JS)
+   ========================================================= */
+
 const likeButtons = document.querySelectorAll(".pin-like"); 
-// Aquí selecciono todos los botones de "me gusta"
+// selecciona botones like       [4.1 Icono Me gusta]
 
 const menuItems = document.querySelectorAll("#menu .menu-link");
-// Aquí cojo todos los enlaces del menú superior
+// selecciona enlaces menú       [2.3 Tres layouts]
 
 const pins = document.querySelectorAll(".pin");
-// Aquí guardo todas las tarjetas de la galería
+// selecciona todas cards        [3.1 Cards Pinterest]
 
 const tituloGaleria = document.querySelector(".galeria .header h2");
-// Aquí selecciono el título principal de la galería para poder cambiarlo
+// selecciona título galería     [2.3 Feedback filtro]
 
 const columns = document.querySelectorAll(".column");
-// Aquí selecciono todas las columnas donde están las tarjetas
+// selecciona columnas galería   [1.2 Grid columnas]
 
 let likeCounter = 0;
-// Uso este contador para saber en qué orden se han marcado los favoritos
+// contador orden likes          [4.2 Reordenar cards]
 
 let currentFilter = "inicio";
-// Aquí guardo qué filtro del menú está activo en cada momento
+// guarda filtro actual          [2.3 Tres layouts]
+
 
 // Guardar posición original dentro de su columna
-columns.forEach(columna => {
+columns.forEach(columna => { 
+  // recorre cada columna        [4.2 Reordenar cards]
   const pinsColumna = Array.from(columna.querySelectorAll(".pin"));
+  // crea array tarjetas         [4.2 Reordenar cards]
+
   pinsColumna.forEach((pin, index) => {
+    // recorre cada tarjeta       [4.2 Reordenar cards]
     pin.dataset.originalIndex = index;
-    // Guardo en cada tarjeta su posición original para luego poder recolocarla
+    // guarda índice original     [4.2 Mantener orden]
   });
 });
 
 // Reordena SIEMPRE la columna según me gusta
 function reordenarColumna(columna) {
-  // En esta función ordeno una columna según los favoritos
+  // define función reordenar     [4.2 Reordenar cards]
   const pinsColumna = Array.from(columna.querySelectorAll(".pin"));
+  // obtiene tarjetas columna     [4.2 Reordenar cards]
 
   const favoritos = pinsColumna.filter(pin =>
     pin.classList.contains("pin-selected")
-    // Aquí separo las tarjetas que están marcadas como favoritas
+    // filtra tarjetas favoritas  [4.2 Reordenar favoritos]
   );
   const noFavoritos = pinsColumna.filter(
     pin => !pin.classList.contains("pin-selected")
-    // Aquí separo las tarjetas que no son favoritas
+    // filtra no favoritas        [4.2 Reordenar resto]
   );
 
   favoritos.sort((a, b) => {
+    // ordena favoritos array      [4.2 Reordenar favoritos]
     const aLike = parseInt(a.dataset.likeOrder || "0", 10);
+    // lee orden favorito A        [4.2 Orden likes]
     const bLike = parseInt(b.dataset.likeOrder || "0", 10);
-    return bLike - aLike; // el último like arriba
-    // Ordeno los favoritos para que los últimos marcados salgan primero
+    // lee orden favorito B        [4.2 Orden likes]
+    return bLike - aLike; // El último "me gusta" se coloca más arriba
+    // coloca últimos arriba       [4.2 Más recientes primero]
   });
 
   noFavoritos.sort((a, b) => {
+    // ordena no favoritos         [4.2 Mantener orden]
     const aOrig = parseInt(a.dataset.originalIndex || "0", 10);
+    // lee índice original A       [4.2 Índice original]
     const bOrig = parseInt(b.dataset.originalIndex || "0", 10);
+    // lee índice original B       [4.2 Índice original]
     return aOrig - bOrig;
-    // Mantengo los no favoritos en el orden original de la columna
+    // conserva orden inicial      [4.2 Orden estable]
   });
 
   const nuevoOrden = favoritos.concat(noFavoritos);
-  // Junto primero los favoritos y luego el resto
+  // junta favoritos y resto       [4.2 Nuevo orden]
 
   nuevoOrden.forEach(pin => columna.appendChild(pin));
-  // Vuelvo a añadir las tarjetas a la columna siguiendo el nuevo orden
+  // reinyecta tarjetas ordenadas  [4.2 Actualiza DOM columna]
 }
 
 // Aplica orden a TODAS las columnas
 function reordenarTodasLasColumnas() {
-  // Esta función aplica el reordenado a cada columna
+  // define reordenar global       [4.2 Reordenar cards]
   columns.forEach(columna => reordenarColumna(columna));
+  // reordena cada columna         [4.2 Reordenación global]
 }
 
 // Aplicar filtro visual
 function aplicarFiltroActual() {
-  // Aquí controlo qué tarjetas se ven según el filtro elegido
+  // gestiona filtros vista        [2.3 Filtros vista]
   if (currentFilter === "favoritos") {
+    // caso filtro favoritos        [4.2 Vista favoritos]
     pins.forEach(pin => {
+      // recorre todas tarjetas     [2.3 Filtros vista]
       const favorito = pin.classList.contains("pin-selected");
+      // comprueba si favorita      [4.1 Estado favorito]
       pin.classList.toggle("fav-hidden", !favorito);
-      // Si no es favorito lo oculto con la clase fav-hidden
+      // oculta no favoritas        [4.2 Solo favoritas]
       pin.classList.remove("hidden");
-      // Me aseguro de que no tenga la clase hidden normal
+      // asegura visible normal     [2.3 Limpia oculto]
     });
   } else {
     pins.forEach(pin => {
+      // recorre tarjetas normales   [2.3 Filtros vista]
       pin.classList.remove("fav-hidden");
-      // Quito la clase de favoritos por si estaba puesta antes
+      // limpia oculto favoritos     [4.2 Limpia estado]
       const tipo = pin.dataset.tipo;
+      // obtiene tipo tarjeta        [2.3 Costa/Interior]
 
       const mostrar =
         currentFilter === "inicio" ||
         (currentFilter === "costa" && tipo === "costa") ||
         (currentFilter === "interior" && tipo === "interior");
-      // Aquí decido si se debe mostrar la tarjeta según el filtro y su tipo
+      // decide mostrar tarjeta      [2.3 Lógica filtros]
 
       pin.classList.toggle("hidden", !mostrar);
-      // Pongo o quito la clase hidden para enseñar u ocultar la tarjeta
+      // aplica ocultar/mostrar      [2.3 Cambia visibilidad]
     });
   }
 }
 
 // Evento de Me gusta
 likeButtons.forEach(button => {
+  // recorre cada botón like        [4.1 Icono Me gusta]
   button.addEventListener("click", () => {
-    // Cuando hago clic en un botón de me gusta se ejecuta este código
+    // añade evento click           [4.1 Click Me gusta]
     const estaMarcado = button.classList.toggle("liked");
-    // Alterno la clase liked para saber si está marcado o no
+    // alterna clase liked          [4.1 Estado corazón]
+
     button.textContent = estaMarcado ? "♥" : "♡";
-    // Cambio el símbolo del botón según esté marcado o no
+    // cambia símbolo corazón       [4.1 Cambio visual icono]
 
     let pin = button.parentElement;
+    // empieza desde contenedor      [4.1 Busca tarjeta]
     while (!pin.classList.contains("pin")) {
       pin = pin.parentElement;
+      // sube hasta .pin             [4.1 Encuentra card]
     }
-    // Subo por el árbol del DOM hasta encontrar la tarjeta completa
 
     if (estaMarcado) {
+      // si se marca favorito        [4.1 Marca favorita]
       pin.classList.add("pin-selected");
-      // Marco la tarjeta como favorita
+      // añade clase favorita        [4.1 Estilo favorito]
       likeCounter++;
+      // incrementa contador likes   [4.2 Orden favorito]
       pin.dataset.likeOrder = likeCounter;
-      // Guardo el orden en el que se ha dado a me gusta
+      // guarda orden pulso like     [4.2 Ordenado posterior]
     } else {
+      // si se desmarca favorito     [4.1 Quita favorita]
       pin.classList.remove("pin-selected");
-      // Quito la marca de favorito
+      // elimina clase favorita      [4.1 Vuelve normal]
       delete pin.dataset.likeOrder;
-      // Borro el dato del orden de me gusta
+      // borra orden guardado        [4.2 Sin prioridad]
     }
 
     // Ordenar inmediatamente
     const columna = pin.parentElement;
-    // Cojo la columna donde está esta tarjeta
+    // obtiene columna actual        [4.2 Columna tarjeta]
     reordenarColumna(columna);
-    // Reordeno la columna para que los favoritos suban
+    // reordena solo esa columna     [4.2 Reordenación inmediata]
 
     // Aplicar filtro si estamos en favoritos o no
     aplicarFiltroActual();
-    // Vuelvo a aplicar el filtro actual para que todo quede coherente
+    // reaplica filtro activo        [2.3 Mantiene vista]
   });
 });
 
 // Evento de menú lateral
 menuItems.forEach(item => {
+  // recorre enlaces menú           [2.3 Menú filtros]
   item.addEventListener("click", e => {
-    // Cada vez que hago clic en un elemento del menú se ejecuta esto
+    // añade evento click menú      [2.3 Interacción menú]
     e.preventDefault();
-    // Evito que el enlace recargue la página
+    // evita navegación enlace      [2.3 Sin recarga]
 
     menuItems.forEach(i => i.classList.remove("active"));
+    // quita activo anteriores      [6.1 Reset estado menú]
     item.classList.add("active");
-    // Quito la clase activa de todos y la pongo solo en el que he pulsado
+    // marca elemento pulsado       [6.1 Activa visualmente]
 
     currentFilter = item.dataset.filter;
-    // Actualizo el filtro actual según el data-filter del enlace
+    // actualiza filtro global       [2.3 Filtro seleccionado]
 
     let nuevoTitulo = "Galería de pueblos y ciudades";
+    // título base galería           [2.3 Texto principal]
     if (currentFilter === "costa") nuevoTitulo = "Galería de pueblos y ciudades de costa";
+    // título para filtro costa      [2.3 Feedback costa]
     if (currentFilter === "interior") nuevoTitulo = "Galería de pueblos y ciudades de interior";
+    // título para filtro interior   [2.3 Feedback interior]
     if (currentFilter === "favoritos") nuevoTitulo = "Galería de pueblos y ciudades favoritas";
-    // Cambio el texto del título según el filtro elegido
+    // título para favoritos         [4.2 Feedback favoritos]
 
     tituloGaleria.textContent = nuevoTitulo;
-    // Actualizo el título que se ve encima de la galería
+    // actualiza título visible      [2.3 Feedback visual filtro]
 
     // Reordenar siempre antes de filtrar
     reordenarTodasLasColumnas();
-    // Primero reordeno todas las columnas para colocar los favoritos
+    // reordena todas columnas       [4.2 Reordenación completa]
     aplicarFiltroActual();
-    // Después aplico el filtro para mostrar solo lo que toca
+    // aplica filtro elegido         [2.3 Filtra resultados]
   });
 });
