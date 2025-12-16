@@ -1,432 +1,492 @@
+/* =========================================================
+   [1.1] ESTRUCTURA GENERAL / RESET
+   ========================================================= */
+
 * {
-  box-sizing: border-box;
-  /* Hago que el tamaño de los elementos incluya padding y borde */
+  box-sizing: border-box;          /* Caja incluye bordes */
 }
 
 body {
-  margin: 0;
-  font-family: Arial;
-  /* Quito márgenes por defecto y uso una fuente sencilla */
+  margin: 0;                       /* Quita márgenes navegador */
+  font-family: Arial;              /* Fuente base sencilla */
 }
 
 /* Encabezado del ejemplo original */
 .header {
-  text-align: center;
-  padding: 32px;
+  text-align: center;              /* Texto centrado horizontal */
+  padding: 32px;                   /* Separación interior grande */
 }
+
+/* =========================================================
+   [1.2] LAYOUT BASE GALERÍA FLEX
+   ========================================================= */
 
 /* --------- CÓDIGO OBLIGATORIO DEL EJEMPLO DE GALERÍA --------- */
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
-  /* Contenedor flexible que permite colocar columnas en varias filas */
+  display: flex;                   /* Contenedor flex principal */
+  flex-wrap: wrap;                 /* Permite varias filas */
+  padding: 0 4px;                  /* Margen interior lateral */
+  /* [1.2] Cuerpo fotos flex */
 }
 
 /* Cuatro columnas iguales */
 .column {
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-  /* Cada columna ocupa una cuarta parte del ancho en pantallas grandes */
+  flex: 25%;                       /* Ocupa cuarta parte */
+  max-width: 25%;                  /* Limita ancho columna */
+  padding: 0 4px;                  /* Separación lateral columnas */
+  /* [1.2] Cuatro columnas base */
 }
 
 .column img {
-  margin-top: 8px;
-  vertical-align: middle;
+  margin-top: 8px;                 /* Separación superior imagen */
+  vertical-align: middle;          /* Alineación vertical media */
 }
+
+/* =========================================================
+   [2.3] LAYOUT RESPONSIVE ORIGINAL
+   ========================================================= */
 
 /* Diseño adaptable: dos columnas si la pantalla es mediana */
 @media screen and (max-width: 800px) {
   .column {
-    flex: 50%;
-    max-width: 50%;
+    flex: 50%;                     /* Dos columnas iguales */
+    max-width: 50%;                /* Ancho máximo mitad */
   }
+  /* [2.3] Layout tablet simple */
 }
 
 /* Diseño adaptable: una sola columna si la pantalla es pequeña */
 @media screen and (max-width: 600px) {
   .column {
-    flex: 100%;
-    max-width: 100%;
+    flex: 100%;                    /* Columna ocupa todo */
+    max-width: 100%;               /* Ancho completo móvil */
   }
+  /* [2.3] Layout móvil columna */
 }
 
-/* --------- ESTILOS PROPIOS DEL PROYECTO --------- */
+/* =========================================================
+   [1.2] LAYOUT PROPIO GRID + FLEX
+   ========================================================= */
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
-  color: #333;
-  /* Fondo gris claro y texto oscuro */
+  font-family: Arial, sans-serif;  /* Fuente sans mejorada */
+  background-color: #f0f2f5;       /* Fondo gris claro */
+  color: #333;                     /* Texto gris oscuro */
 }
 
 /* Diseño general usando grid */
 .layout {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;               /* Alto mínimo pantalla */
+  display: grid;                   /* Activo grid layout */
+  grid-template-columns: 1fr;      /* Una columna base */
+  grid-template-rows: auto auto 1fr auto; /* Filas header/nav/main/footer */
   grid-template-areas:
     "header"
     "nav"
     "main"
-    "footer";
-  /* Organizo la página por zonas: cabecera, menú, contenido y pie */
+    "footer";                      /* Defino áreas semánticas */
+  /* [1.2] Plantilla grid completa */
 }
 
 /* Cabecera centrada */
 header {
-  grid-area: header;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  padding: 0.75rem 1.5rem;
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  /* Mantengo la cabecera fija arriba al hacer scroll */
+  grid-area: header;               /* Asigno área header */
+  display: flex;                   /* Uso flex interno */
+  flex-direction: column;          /* Elementos en columna */
+  align-items: center;             /* Centro horizontalmente */
+  justify-content: center;         /* Centro verticalmente */
+  gap: 0.25rem;                    /* Separación entre elementos */
+  padding: 0.75rem 1.5rem;         /* Relleno interior header */
+  background: #ffffff;             /* Fondo blanco cabecera */
+  border-bottom: 1px solid #e0e0e0;/* Línea inferior suave */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06); /* Sombra ligera header */
+  position: sticky;                /* Fijo al hacer scroll */
+  top: 0;                          /* Pegado a la parte superior */
+  z-index: 10;                     /* Por encima del resto */
+  /* [1.1] Cabecera siempre visible */
 }
 
 header h1 {
-  margin: 0;
-  font-size: 1.6rem;
+  margin: 0;                       /* Sin margen exterior */
+  font-size: 1.6rem;               /* Tamaño título principal */
 }
 
 header p {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #555;
+  margin: 0;                       /* Sin margen inferior */
+  font-size: 1rem;                 /* Tamaño subtítulo */
+  font-weight: bold;               /* Texto en negrita */
+  color: #555;                     /* Color gris medio */
 }
 
 /* Menú lateral o superior según tamaño */
 nav {
-  grid-area: nav;
-  background: #ffffff;
-  border-right: 1px solid #e0e0e0;
+  grid-area: nav;                  /* Asigno área nav */
+  background: #ffffff;             /* Fondo blanco menú */
+  border-right: 1px solid #e0e0e0; /* Borde derecho suave */
+  /* [1.1] Zona menú semántica */
 }
 
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 1rem 1.25rem;
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  /* En móvil el menú puede deslizarse si no cabe */
+  list-style: none;                /* Quita viñetas lista */
+  margin: 0;                       /* Elimina margen lista */
+  padding: 1rem 1.25rem;           /* Relleno interno lista */
+  display: flex;                   /* Menú en flex */
+  gap: 1rem;                       /* Separación entre enlaces */
+  overflow-x: auto;                /* Scroll horizontal móvil */
+  /* [2.1] Menú usable móvil */
 }
 
 nav li {
-  white-space: nowrap;
+  white-space: nowrap;             /* Evita salto de línea */
 }
 
 nav a {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.55rem 1.4rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  color: #444;
-  cursor: pointer;
+  display: inline-flex;            /* Enlace como flex inline */
+  align-items: center;             /* Centra contenido vertical */
+  padding: 0.55rem 1.4rem;         /* Relleno clicable cómodo */
+  border-radius: 999px;            /* Bordes muy redondeados */
+  text-decoration: none;           /* Sin subrayado enlace */
+  font-size: 0.95rem;              /* Tamaño texto menú */
+  color: #444;                     /* Color gris oscuro */
+  cursor: pointer;                 /* Cursor mano interactivo */
 }
 
 nav a:hover {
-  background: #f0f2f5;
+  background: #f0f2f5;             /* Fondo gris en hover */
 }
 
 nav a.active {
-  font-weight: bold;
-  background: #f5f5f5;
-  /* Destaco la opción del menú que está activa */
+  font-weight: bold;               /* Resalta opción activa */
+  background: #f5f5f5;             /* Fondo algo más claro */
+  /* [6.1] Feedback estado activo */
 }
 
 /* Contenido principal */
 main {
-  grid-area: main;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  grid-area: main;                 /* Asigno área main */
+  padding: 1rem;                   /* Relleno interiore main */
+  display: flex;                   /* Main en flex */
+  flex-direction: column;          /* Contenido en columna */
+  /* [1.2] Cuerpo principal flexible */
 }
 
 footer {
-  grid-area: footer;
-  text-align: center;
-  padding: 1rem;
-  background: #ffffff;
-  border-top: 1px solid #e0e0e0;
-  font-size: 0.9rem;
+  grid-area: footer;               /* Asigno área footer */
+  text-align: center;              /* Texto centrado pie */
+  padding: 1rem;                   /* Relleno interior pie */
+  background: #ffffff;             /* Fondo blanco footer */
+  border-top: 1px solid #e0e0e0;   /* Borde superior suave */
+  font-size: 0.9rem;               /* Tamaño texto pequeño */
 }
 
 /* Contenedor de la galería */
 .galeria {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px;               /* Ancho máximo galería */
+  margin: 0 auto;                  /* Centrar galería horizontal */
 }
 
 .header h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.4rem;
+  margin: 0 0 0.5rem;              /* Margen inferior subtítulo */
+  font-size: 1.4rem;               /* Tamaño título sección */
 }
 
 .header p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #666;
+  margin: 0;                       /* Sin margen extra */
+  font-size: 0.9rem;               /* Texto secundario pequeño */
+  color: #666;                     /* Color gris suave */
 }
+/* =========================================================
+   [1.2] FORMATO DE GALERÍA (FLEX)
+   ========================================================= */
 
 /* --------- FORMATO DE GALERÍA --------- */
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: flex;                   /* Activa contenedor flexible */
+  flex-wrap: wrap;                 /* Permite varias filas */
+  justify-content: flex-start;     /* Alinea inicio elementos */
+  /* [1.2] Layout fotos flex */
 }
 
 .gallery-item {
-  margin: 5px;
+  margin: 5px;                     /* Margen exterior tarjeta */
 }
 
 /* Imágenes dentro de columnas */
 .column img {
-  width: 100%;
-  border-radius: 16px;
-  display: block;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;                     /* Ocupa ancho completo */
+  border-radius: 16px;             /* Esquinas suaves redondeadas */
+  display: block;                  /* Se comporta bloque */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra ligera profundidad */
+  /* [3.1] Card borde sombra */
 }
 
 /* En pantallas pequeñas las columnas ocupan todo el ancho */
 .column {
-  flex: 100%;
-  max-width: 100%;
+  flex: 100%;                      /* Columna móvil completa */
+  max-width: 100%;                 /* Ancho máximo completo */
+  /* [2.3] Layout móvil único */
 }
 
-/* --------- MEDIA QUERIES NUEVA SINTAXIS --------- */
+/* =========================================================
+   [2.2] MEDIA QUERIES NUEVA SINTAXIS
+   ========================================================= */
 
 @media (600px <= width <= 800px) {
   .layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;    /* Columna única tablet */
+    grid-template-rows: auto auto 1fr auto; /* Filas header nav main footer */
     grid-template-areas:
       "header"
       "nav"
       "main"
-      "footer";
+      "footer";                    /* Áreas grid tablet */
+    /* [2.3] Estructura tablet base */
   }
 
   main {
-    padding: 1.25rem;
+    padding: 1.25rem;              /* Relleno extra tablet */
   }
 
   .column {
-    flex: 50%;
-    max-width: 50%;
-    /* Dos columnas en pantallas medianas */
+    flex: 50%;                     /* Dos columnas tablet */
+    max-width: 50%;                /* Ancho mitad contenedor */
+    /* [2.3] Layout 2 columnas */
   }
 }
 
 @media (width > 800px) {
   /* Diseño con menú lateral fijo */
   .layout {
-    grid-template-columns: 220px 1fr;
-    grid-template-rows: 70px 1fr 70px;
+    grid-template-columns: 220px 1fr; /* Columna menú fija */
+    grid-template-rows: 70px 1fr 70px;/* Filas altas fijas */
     grid-template-areas:
       "header header"
       "nav main"
-      "footer footer";
+      "footer footer";             /* Header nav main footer */
+    /* [2.3] Layout escritorio completo */
   }
 
   /* Ajusto cabecera para que no se superponga con el menú */
   header {
-    width: calc(100% - 220px);
-    margin-left: 220px;
+    width: calc(100% - 220px);     /* Ancho sin lateral */
+    margin-left: 220px;            /* Desplazo por menú */
   }
 
   /* Ajusto el pie de página igual que el header */
   footer {
-    width: calc(100% - 220px);
-    margin-left: 220px;
+    width: calc(100% - 220px);     /* Ancho footer ajustado */
+    margin-left: 220px;            /* Pie alineado contenido */
   }
 
   nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem 0 1.5rem 0;
+    display: flex;                 /* Menú en flex */
+    flex-direction: column;        /* En columna lateral */
+    align-items: flex-start;       /* Alinea a izquierda */
+    padding: 1.5rem 0 1.5rem 0;    /* Relleno vertical lateral */
   }
 
   nav ul {
-    flex-direction: column;
-    gap: 1.2rem;
-    overflow: visible;
-    width: 100%;
-    padding-left: 1.5rem;
+    flex-direction: column;        /* Lista vertical lateral */
+    gap: 1.2rem;                   /* Separación enlaces menú */
+    overflow: visible;             /* Sin scroll lateral */
+    width: 100%;                   /* Ocupa ancho lateral */
+    padding-left: 1.5rem;          /* Sangría izquierda lista */
   }
 
   nav a {
-    justify-content: flex-start;
-    border-radius: 0;
-    border-left: 3px solid transparent;
+    justify-content: flex-start;   /* Texto alineado izquierda */
+    border-radius: 0;              /* Sin bordes redondeados */
+    border-left: 3px solid transparent; /* Indicador lateral apagado */
   }
 
   nav a.active {
-    border-left: 3px solid #111;
-    background: #f5f5f5;
+    border-left: 3px solid #111;   /* Indicador lateral activo */
+    background: #f5f5f5;           /* Fondo activo claro */
     /* Señalo el elemento activo del menú lateral */
+    /* [6.1] Feedback visual foco */
   }
 
   main {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem;          /* Relleno mayor desktop */
   }
 
   .column {
-    flex: 25%;
-    max-width: 25%;
+    flex: 25%;                     /* Cuatro columnas desktop */
+    max-width: 25%;                /* Ancho cuarto contenedor */
     /* Vuelvo a las cuatro columnas */
+    /* [2.3] Layout escritorio cuatro */
   }
 }
 
-/* --------- TARJETAS TIPO PINTEREST --------- */
+/* =========================================================
+   [3.1] TARJETAS ESTILO PINTEREST
+   ========================================================= */
 
 .pin {
-  position: relative;
-  display: block;
-  width: 100%;
-  margin-top: 8px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid #e4e4e4;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  position: relative;              /* Referencia capa overlay */
+  display: block;                  /* Ocupa ancho línea */
+  width: 100%;                     /* Tarjeta ancho completo */
+  margin-top: 8px;                 /* Separación superior tarjeta */
+  border-radius: 18px;             /* Esquinas muy redondeadas */
+  overflow: hidden;                /* Oculta contenido sobrante */
+  background: #ffffff;             /* Fondo blanco tarjeta */
+  border: 1px solid #e4e4e4;       /* Borde gris clarito */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06); /* Sombra suave moderna */
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease,
-    background-color 0.15s ease, opacity 0.15s ease;
+    background-color 0.15s ease, opacity 0.15s ease; /* Transiciones suaves hover */
   /* Cada tarjeta funciona como un bloque tipo Pinterest */
+  /* [3.1] Card moderna completa */
 }
 
 /* Para filtros inicio/costa/interior */
 .pin.hidden {
-  display: none;
+  display: none;                   /* Oculta tarjeta filtro */
   /* Oculto completamente los pins cuando no coinciden con el filtro */
 }
 
 /* Para filtro FAVORITOS: oculto sin romper el diseño */
 .pin.fav-hidden {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
+  opacity: 0;                      /* Tarjeta invisible visualmente */
+  pointer-events: none;            /* No permite interacción */
+  visibility: hidden;              /* Oculta a layout también */
+  /* [4.2] Soporte vista favoritos */
 }
 
 /* Imagen dentro del pin */
 .pin img {
-  margin-top: 0;
-  width: 100%;
-  display: block;
-  border-radius: 18px 18px 0 0;
+  margin-top: 0;                   /* Sin margen superior */
+  width: 100%;                     /* Imagen ancho completo */
+  display: block;                  /* Imagen tipo bloque */
+  border-radius: 18px 18px 0 0;    /* Redondeo solo superior */
 }
 
-/* --------- EFECTO ZOOM --------- */
+/* =========================================================
+   [3.2] EFECTO ZOOM Y OVERLAY
+   ========================================================= */
 
 .zoom {
-  transition: transform 0.2s;
-  transform-origin: center center;
+  transition: transform 0.2s;      /* Transición escala suave */
+  transform-origin: center center; /* Escala desde centro */
   /* Preparo la imagen para ampliarla suavemente */
 }
 
 .pin:hover .zoom {
-  transform: scale(1.05);
+  transform: scale(1.05);          /* Aumenta tamaño ligero */
+  /* [3.2] Hover zoom imagen */
 }
 
 /* Capa con texto y botones */
 .pin-overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute;              /* Posiciona sobre imagen */
+  inset: 0;                        /* Ocupa toda tarjeta */
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.15) 0%,
     rgba(0, 0, 0, 0.55) 100%
-  );
-  color: #ffffff;
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0.85rem;
-  transition: opacity 0.2s ease-in-out;
-  font-size: 0.85rem;
+  );                               /* Degradado oscuro suave */
+  color: #ffffff;                  /* Texto overlay blanco */
+  opacity: 0;                      /* Inicialmente transparente */
+  display: flex;                   /* Distribuye contenido flex */
+  flex-direction: column;          /* Contenido en columna */
+  justify-content: space-between;  /* Separa texto y acciones */
+  padding: 0.85rem;                /* Relleno interior overlay */
+  transition: opacity 0.2s ease-in-out; /* Aparece de forma suave */
+  font-size: 0.85rem;              /* Texto overlay pequeño */
+  /* [3.2] Oscurecimiento + contenido */
 }
 
 .pin-text {
-  margin: 0;
-  line-height: 1.3;
+  margin: 0;                       /* Sin margen texto */
+  line-height: 1.3;                /* Altura línea cómoda */
 }
 
+/* =========================================================
+   [3.3] ACCIONES DE LA CARD (BOTONES)
+   ========================================================= */
+
 .pin-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
+  display: flex;                         /* Contenedor acciones flex */
+  justify-content: space-between;        /* Separa botones extremos */
+  align-items: center;                   /* Centra verticalmente contenido */
+  gap: 0.5rem;                           /* Espacio entre controles */
 }
 
 .pin-like,
 .pin-external {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 34px;
-  height: 30px;
-  padding: 0 0.6rem;
-  border-radius: 999px;
-  border: none;
-  font-size: 0.9rem;
-  cursor: pointer;
+  display: inline-flex;                  /* Elementos flex en línea */
+  align-items: center;                   /* Centra contenido vertical */
+  justify-content: center;              /* Centra contenido horizontal */
+  min-width: 34px;                      /* Ancho mínimo botón */
+  height: 30px;                         /* Alto fijo botón */
+  padding: 0 0.6rem;                    /* Relleno horizontal interno */
+  border-radius: 999px;                 /* Forma pastilla redondeada */
+  border: none;                         /* Sin borde por defecto */
+  font-size: 0.9rem;                    /* Tamaño texto pequeño */
+  cursor: pointer;                      /* Cursor mano interactiva */
+  /* [3.3] Botón acción card */
+  /* [3.2] Iconos sobre imagen */
+  /* [4.1] Base icono MeGusta */
 }
 
 .pin-like {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15); /* Fondo claro semitransparente */
+  color: #ffffff;                        /* Texto/icono blanco */
 }
 
 .pin-like.liked {
-  background: #ff4b5c;
-  color: #ffffff;
+  background: #ff4b5c;                  /* Fondo rojo favorito */
+  color: #ffffff;                       /* Icono corazón blanco */
   /* Color especial al marcar como favorito */
+  /* [4.1] Cambio visual MeGusta */
 }
 
 .pin-external {
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
+  text-decoration: none;                /* Sin subrayado enlace */
+  background: rgba(255, 255, 255, 0.18);/* Fondo claro semitransparente */
+  color: #ffffff;                       /* Icono flecha blanco */
+  /* [3.2] Icono enlace externo */
 }
+
+/* =========================================================
+   [3.2] EFECTO HOVER COMPLETO EN CARD
+   ========================================================= */
 
 /* Hover de la tarjeta */
 .pin:hover .pin-overlay {
-  opacity: 1;
+  opacity: 1;                           /* Muestra overlay completo */
+  /* Muestra la capa oscura y los iconos al pasar el ratón */
+  /* [3.2] Overlay texto/iconos */
 }
 
 .pin:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
-  border-color: #cfcfcf;
-  background-color: #fafafa;
+  transform: translateY(-6px);          /* Eleva tarjeta ligeramente */
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16); /* Aumenta sombra profundidad */
+  border-color: #cfcfcf;                /* Borde algo más marcado */
+  background-color: #fafafa;            /* Fondo ligeramente más claro */
+  /* [6.1] Animación foco ratón */
+  /* [6.2] Sombra y borde sutil */
 }
+
+/* =========================================================
+   [4.1][4.2] ESTADO FAVORITO / REORDENACIÓN (JS)
+   ========================================================= */
 
 /* Cuando la tarjeta está marcada como favorita */
 .pin-selected {
-  border: 2px solid #ff4b5c;
-  background-color: #ffe6e9;
-  transition: all 0.25s ease;
+  border: 2px solid #ff4b5c;            /* Borde rojo destacado */
+  background-color: #ffe6e9;            /* Fondo rosado suave */
+  transition: all 0.25s ease;           /* Transición estado suave */
+  /* [4.1] Marca card favorita */
+  /* [4.2] Preparado para reordenar */
 }
 
 .pin-selected:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
-  background-color: #ffdfe3;
-  border-color: #ff2f45;
+  transform: translateY(-6px);          /* Mantiene desplazamiento hover */
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18); /* Sombra aún más fuerte */
+  background-color: #ffdfe3;            /* Fondo favorito más intenso */
+  border-color: #ff2f45;                /* Borde rojo más vivo */
+  /* Mantiene la animación y refuerza el estilo de favorito al pasar el ratón */
+  /* [6.1] Hover especial favorito */
 }
